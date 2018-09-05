@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<company id ="0" name="MyCompany" icon="Images/iconC.png">
+  <item id="100" name="Департамент 1" icon="Images/iconA.png">
+    <item id="101" name ="Employee 1" icon="Images/iconB.png"/>
+    <item id="102" name ="Employee 2" icon="Images/iconB.png"/>
+    <item id="103" name ="Employee 3" icon="Images/iconB.png"/>
+  </item>
+  <item id="200" name="Департамент 2" icon="Images/iconA.png">
+    <item id="201" name ="Employee 4" icon="Images/iconB.png"/>
+    <item id="202" name ="Employee 5" icon="Images/iconB.png"/>
+    <item id="203" name ="Employee 6" icon="Images/iconB.png"/>
+  </item>
+  <item id="300" name="Департамент 3" icon="Images/iconA.png">
+    <item id="301" name ="Employee 7" icon="Images/iconB.png"/>
+    <item id="302" name ="Employee 8" icon="Images/iconB.png"/>
+    <item id="303" name ="Employee 9" icon="Images/iconB.png"/>
+  </item>
+</company>

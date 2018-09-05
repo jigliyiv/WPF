@@ -1,0 +1,74 @@
+﻿<Window x:Class="TreeViewDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TreeViewDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <XmlDataProvider x:Key="content" Source="Data/Content.xml" /> <!--XPath="root"-->
+        <Style TargetType="TreeViewItem">
+            <Setter Property="IsExpanded" Value="True"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <TabControl>
+            <TabItem Header="Статическое дерево">
+                <TreeView x:Name="tv1" FontSize="16"
+                  SelectedItemChanged="tv1_SelectedItemChanged">
+                    <TreeViewItem  IsExpanded="True">
+                        <TreeViewItem.Header>
+                            <WrapPanel>
+                                <Image Source="Images/icon1.png" Width="25"/>
+                                <TextBlock>Языки программирования</TextBlock>
+                            </WrapPanel>
+                        </TreeViewItem.Header>
+                        <TreeViewItem Header="C++"/>
+                        <TreeViewItem Header="C#"/>
+                        <TreeViewItem Header="Java"/>
+                        <TreeViewItem Header="Java Script"/>
+                        <TreeViewItem Header="PHP"/>
+                    </TreeViewItem>
+                    <TreeViewItem  IsExpanded="False">
+                        <TreeViewItem.Header>
+                            <WrapPanel>
+                                <Image Source="Images/icon2.png" Width="20"/>
+                                <TextBlock>Операционные системы</TextBlock>
+                            </WrapPanel>
+                        </TreeViewItem.Header>
+                        <TreeViewItem Header="Windows"/>
+                        <TreeViewItem Header="Linux"/>
+                        <TreeViewItem Header="Android"/>
+                    </TreeViewItem>
+                    <TreeViewItem  IsExpanded="False">
+                        <TreeViewItem.Header>
+                            <WrapPanel>
+                                <Image Source="Images/icon3.png" Width="35"/>
+                                <TextBlock>Сервера баз данных</TextBlock>
+                            </WrapPanel>
+                        </TreeViewItem.Header>
+                        <TreeViewItem Header="MS SQL Server"/>
+                        <TreeViewItem Header="Oracle Database"/>
+                        <TreeViewItem Header="Mariya DB"/>
+                    </TreeViewItem>
+                </TreeView>
+            </TabItem>
+            <TabItem Header="Динамическое дерево">
+                <TreeView ItemsSource="{Binding Source={StaticResource content}, XPath=company}"
+                          SelectedValuePath="@name"
+                          SelectedItemChanged="TreeView_SelectedItemChanged"
+                          x:Name="tv2">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding XPath=item}">
+                            <WrapPanel>
+                                <Image Source="{Binding XPath=@icon}" Width="30"/>
+                                <TextBlock Text="{Binding XPath=@name}" VerticalAlignment="Center"/>
+                            </WrapPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
